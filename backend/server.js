@@ -1,16 +1,9 @@
-const express = require ("express");
-const cors = require("cors");
+const mongoose = require("mongoose");
 
-require("dotenv").config();
+mongoose.connect("mongodb+srv://babar007:saqib786@cluster0.dvwes.mongodb.net/test?retryWrites=true&w=majority", {useNewUrlParser: true, useUnifiedTopology: true});
 
-const app = express();
-const port = process.env.PORT || 5000;
-
-
-app.use(cors());
-app.use(express.json());
-
-app.listen(port, () => {
-    console.log("server is runing: ${port}");
-
+mongoose.connection
+.once("open", () => console.log("connected"))
+.on("error", () =>{
+    console.log("error", error);
 })
